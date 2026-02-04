@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ user.username }}'s Profile - SkillSwap{% endblock %}
+
+{% block content %}
+<div class="row">
+    <!-- Profile Card -->
+    <div class="col-md-4">
+        <div class="card shadow">
+            <div class="card-body text-center">
+                {% if profile.profile_pic %}
+
+                    <img src="{{ profile.profile_pic.url }}" 
+                         alt="{{ user.username }}" 
+                         class="rounded-circle img-fluid mb-3" 
+                         style="width: 150px; height: 150px; object-fit: cover;">
+                {% else %}
+                    <div class="bg-secondary rounded-circle d-inline-flex align-items-center justify-content-center mb-3" 
+                         style="width: 150px; height: 150px;">
+                        <i class="fas fa-user fa-4x text-white"></i>
+                    </div>
+                {% endif %}
+                
+                <h3>{{ user.username }}</h3>
+                {% if user.first_name or user.last_name %}
+                    <p class="text-muted">{{ user.get_full_name }}</p>
+                {% endif %}
+                
+                {% if profile.location %}
+                    <p><i class="fas fa-map-marker-alt"></i> {{ profile.location }}</p>
+                {% endif %}
+                
+                <p class="text-muted small">
+                    <i class="fas fa-calendar-alt"></i> 
+                    Joined {{ user.date_joined|date:"F Y" }}
+                </p>
+                
+                <div class="d-grid gap-2">
+                    <a href="{% url 'profile_update' %}" class="btn btn-primary">
+                        <i class="fas fa-edit"></i> Edit Profile
+                    </a>
+                    <a href="{% url 'change_password' %}" class="btn btn-outline-secondary">
+                        <i class="fas fa-key"></i> Change Password
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Profile Details -->
+    <div class="col-md-8">
+        <!-- Contact Information -->
+        <div class="card shadow mb-4">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0"><i class="fas fa-address-card"></i> Contact Information</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <strong><i class="fas fa-envelope"></i> Email:</strong>
+                        <p>{{ user.email }}</p>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <strong><i class="fas fa-phone"></i> Phone:</strong>
+                        <p>{{ user.phone|default:"Not provided" }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bio -->
+        {% if profile.bio %}
+        <div class="card shadow mb-4">
+            <div class="card-header bg-info text-white">
+                <h5 class="mb-0"><i class="fas fa-user-circle"></i> About Me</h5>
+            </div>
+            <div class="card-body">
+                <p>{{ profile.bio }}</p>
+            </div>
+        </div>
+        {% endif %}
+        
+        <!-- Skills Offered -->
+        <div class="card shadow mb-4">
+            <div class="card-header bg-success text-white">
+                <h5 class="mb-0"><i class="fas fa-chalkboard-teacher"></i> Skills I Can Teach</h5>
+            </div>
+            <div class="card-body">
+                {% if profile.skills_offered %}
+                    <div class="d-flex flex-wrap gap-2">
+                        {% for skill in profile.get_skills_offered_list %}
+                            <span class="badge bg-success">{{ skill }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p class="text-muted">No skills listed yet.</p>
+                {% endif %}
+            </div>
+        </div>
+        
+        <!-- Skills Wanted -->
+        <div class="card shadow mb-4">
+            <div class="card-header bg-warning text-dark">
+                <h5 class="mb-0"><i class="fas fa-graduation-cap"></i> Skills I Want to Learn</h5>
+            </div>
+            <div class="card-body">
+                {% if profile.skills_wanted %}
+                    <div class="d-flex flex-wrap gap-2">
+                        {% for skill in profile.get_skills_wanted_list %}
+                            <span class="badge bg-warning text-dark">{{ skill }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <p class="text-muted">No skills listed yet.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

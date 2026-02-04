@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- Hero Section -->
+{% include 'Includes/hero_section.html' %}
+<!-- Community Stats Section -->
+{% include 'Includes/Community_section.html' %}
+<!-- Features Section -->
+{% include 'Includes/Feature_section.html' %}
+<!-- How It Works Section -->
+{% include 'Includes/works_section.html' %}
+<!-- CTA Section -->
+{% include 'Includes/CTA_section.html' %}
+
+{% endblock %}

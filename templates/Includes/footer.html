@@ -1,0 +1,53 @@
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-content">
+        <div>
+            <div class="footer-brand">
+                <div class="logo-icon">
+                    <i class="fas fa-exchange-alt"></i>
+                </div>
+                <span>SkillSwap</span>
+            </div>
+            <p class="footer-description">
+                Empowering communities through skill exchange and mutual learning. Connect, share, and grow together.
+            </p>
+        </div>
+        <div class="footer-section">
+            <h3>Platform</h3>
+            <ul class="footer-links">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="#">Browse Skills</a></li>
+                <li><a href="#">How It Works</a></li>
+                <li><a href="#">Community</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Account</h3>
+            <ul class="footer-links">
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'profile' %}">My Profile</a></li>
+                    <li><a href="{% url 'profile_update' %}">Edit Profile</a></li>
+                    <li><a href="{% url 'change_password' %}">Settings</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Sign In</a></li>
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                {% endif %}
+                <li><a href="#">Help Center</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Legal</h3>
+            <ul class="footer-links">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Cookie Policy</a></li>
+                <li><a href="#">Guidelines</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <p>&copy; 2026 SkillSwap. All rights reserved. Share your skills, learn new ones.</p>
+        </div>
+    </div>
+</footer>

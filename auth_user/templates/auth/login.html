@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block title %}Login - SkillSwap{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-wrapper">
+        <!-- Left Side - Illustration & Info -->
+        <div class="auth-left">
+            <div class="auth-branding">
+                <div class="auth-logo">
+                    <i class="fas fa-exchange-alt"></i>
+                </div>
+                <h2>Welcome Back!</h2>
+                <p>Login to continue your skill exchange journey</p>
+            </div>
+
+            <div class="auth-features">
+                <div class="auth-feature">
+                    <i class="fas fa-handshake"></i>
+                    <span>Connect with skilled individuals</span>
+                </div>
+                <div class="auth-feature">
+                    <i class="fas fa-book-open"></i>
+                    <span>Learn new skills every day</span>
+                </div>
+                <div class="auth-feature">
+                    <i class="fas fa-users"></i>
+                    <span>Join 10K+ active members</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side - Login Form -->
+        <div class="auth-right">
+            <div class="auth-form-container">
+                <div class="auth-header">
+                    <h3>Sign In</h3>
+                    <p>Enter your credentials to access your account</p>
+                </div>
+
+                <form method="post" novalidate class="auth-form">
+                    {% csrf_token %}
+
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger auth-alert">
+                            <i class="fas fa-exclamation-circle"></i>
+                            {{ form.non_field_errors }}
+                        </div>
+                    {% endif %}
+
+                    <!-- Username Field -->
+                    <div class="form-group">
+                        <label for="{{ form.username.id_for_label }}" class="form-label">
+                            <i class="fas fa-user"></i> Username
+                        </label>
+                        <div class="input-wrapper">
+                            {{ form.username }}
+                        </div>
+                        {% if form.username.errors %}
+                            <div class="field-error">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                {{ form.username.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Password Field -->
+                    <div class="form-group">
+                        <label for="{{ form.password.id_for_label }}" class="form-label">
+                            <i class="fas fa-lock"></i> Password
+                        </label>
+                        <div class="input-wrapper">
+                            {{ form.password }}
+                        </div>
+                        {% if form.password.errors %}
+                            <div class="field-error">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                {{ form.password.errors }}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn-auth-primary">
+                        <i class="fas fa-sign-in-alt"></i> Sign In
+                    </button>
+                </form>
+
+                <!-- Footer -->
+                <div class="auth-footer">
+                    <p>Don't have an account?
+                        <a href="{% url 'register' %}" class="auth-link">Create Account</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

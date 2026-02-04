@@ -1,0 +1,24 @@
+<section class="hero-section">
+    <div class="opportunity-badge">
+        ✨ Where Skills Meet Opportunity
+    </div>
+    <div class="hero-content">
+        <div class="hero-text">
+            <h1>
+                Exchange Skills,<br>
+                <span class="highlight">Grow Together</span>
+            </h1>
+            <p>
+                Connect with talented individuals, swap your expertise, and learn something new. No money required - just passion and curiosity.
+            </p>
+            <div class="hero-buttons">
+                <a href="{% url 'register' %}" class="btn-primary">Get Started</a>
+                <a href="#features" class="btn-secondary">Browse Skills</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            {% load static %}
+            <img src="{% static 'images/hero-image-D2-GXvLJ.jpg' %}" alt="People exchanging skills">
+        </div>
+    </div>
+</section>
