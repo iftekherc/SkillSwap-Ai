@@ -1,21 +1,184 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
-{% endblock %}
 
 {% block content %}
 
 <!-- Hero Section -->
-{% include 'Includes/hero_section.html' %}
-<!-- Community Stats Section -->
-{% include 'Includes/Community_section.html' %}
-<!-- Features Section -->
-{% include 'Includes/Feature_section.html' %}
-<!-- How It Works Section -->
-{% include 'Includes/works_section.html' %}
-<!-- CTA Section -->
-{% include 'Includes/CTA_section.html' %}
 
+<section class="hero-section">
+    <div class="opportunity-badge">
+        ✨ Where Skills Meet Opportunity
+    </div>
+    <div class="hero-content">
+        <div class="hero-text">
+            <h1>
+                Exchange Skills,<br>
+                <span class="highlight">Grow Together</span>
+            </h1>
+            <p>
+                Connect with talented individuals, swap your expertise, and learn something new. No money required - just passion and curiosity.
+            </p>
+            <div class="hero-buttons">
+                <a href="{% url 'register' %}" class="btn-primary">Get Started</a>
+                <a href="#features" class="btn-secondary">Browse Skills</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            {% load static %}
+            <img src="{% static 'images/hero-image-D2-GXvLJ.jpg' %}" alt="People exchanging skills">
+        </div>
+    </div>
+</section>
+
+<!-- Community Stats Section -->
+
+<section class="community-section" id="community">
+    <h2>Join Our <span class="highlight">Growing Community</span></h2>
+    <p class="community-subtitle">Thousands of learners are already exchanging skills and growing together</p>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-users"></i>
+            </div>
+            <div class="stat-number">10K+</div>
+            <div class="stat-label">Active Members</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-sync-alt"></i>
+            </div>
+            <div class="stat-number">50K+</div>
+            <div class="stat-label">Skills Exchanged</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon">
+                <i class="fas fa-book-open"></i>
+            </div>
+            <div class="stat-number">500+</div>
+            <div class="stat-label">Skill Categories</div>
+        </div>
+    </div>
+</section>
+<!-- Features Section -->
+
+<section class="features-section" id="features">
+    <h2>Why Choose <span class="highlight">SkillSwap</span>?</h2>
+    <p class="features-subtitle">A platform designed to make skill sharing seamless, safe, and rewarding</p>
+
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-handshake"></i>
+            </div>
+            <div class="feature-title">Diverse Community</div>
+            <div class="feature-description">
+                Connect with skilled individuals from all walks of life, ready to share and learn.
+            </div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-bullseye"></i>
+            </div>
+            <div class="feature-title">Smart Matching</div>
+            <div class="feature-description">
+                Our smart algorithm pairs you with the perfect skill partners in seconds.
+            </div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <div class="feature-title">Safe & Verified</div>
+            <div class="feature-description">
+                All members are verified with reviews and ratings for your peace of mind.
+            </div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-globe"></i>
+            </div>
+            <div class="feature-title">Global Network</div>
+            <div class="feature-description">
+                Learn from experts worldwide through virtual or in-person skill exchanges.
+            </div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-coins"></i>
+            </div>
+            <div class="feature-title">No Money Needed</div>
+            <div class="feature-description">
+                Trade skills instead of cash. Your expertise is your currency here.
+            </div>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="feature-title">Track Progress</div>
+            <div class="feature-description">
+                Monitor your learning journey and celebrate milestones with the community.
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works Section -->
+
+<section class="how-it-works" id="how-it-works">
+    <h2>How It <span class="highlight">Works</span></h2>
+    <p class="how-it-works-subtitle">Get started in three simple steps and unlock a world of knowledge</p>
+
+    <div class="steps-grid">
+        <div class="step-card">
+            <div class="step-icon">
+                <div class="step-number">01</div>
+                <i class="fas fa-user-plus"></i>
+            </div>
+            <div class="step-title">Create Your Profile</div>
+            <div class="step-description">
+                Sign up and list the skills you can teach and what you'd like to learn.
+            </div>
+        </div>
+        <div class="step-card">
+            <div class="step-icon">
+                <div class="step-number">02</div>
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="step-title">Find Your Match</div>
+            <div class="step-description">
+                Browse through our community or let our algorithm find the perfect skill partner for you.
+            </div>
+        </div>
+        <div class="step-card">
+            <div class="step-icon">
+                <div class="step-number">03</div>
+                <i class="fas fa-handshake"></i>
+            </div>
+            <div class="step-title">Start Exchanging</div>
+            <div class="step-description">
+                Connect, schedule sessions, and begin your journey of mutual growth and learning.
+            </div>
+        </div>
+    </div>
+</section>
+<!-- CTA Section -->
+
+<section class="cta-section">
+    <h2>Ready to <span class="highlight">Start Learning</span>?</h2>
+    <p class="cta-subtitle">
+        Join thousands of learners and teachers exchanging skills every day. Your next skill is just a swap away.
+    </p>
+    <div class="cta-buttons">
+        <a href="{% url 'register' %}" class="btn-cta-primary">Join SkillSwap Now</a>
+        <a href="#features" class="btn-secondary">Learn More</a>
+    </div>
+    <p class="cta-note">
+        <i class="fas fa-check-circle"></i> Free to join
+        <i class="fas fa-check-circle"></i> No credit card required
+        <i class="fas fa-check-circle"></i> Cancel anytime
+    </p>
+</section>
 {% endblock %}
